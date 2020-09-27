@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 import kotlinx.android.synthetic.main.item_website.view.*
 
-class WebsiteAdapter(private val websites:List<Website>):RecyclerView.Adapter<WebsiteAdapter.ViewHolder>(){
+class WebsiteAdapter(private val websites:List<Website>,val clickListener:(Website)->Unit):RecyclerView.Adapter<WebsiteAdapter.ViewHolder>(){
+
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
-        fun databind(website:Website){
+        fun databind(website:Website,clickListener: (Website) -> Unit){
             itemView.tvWebsite.text = website.websiteTitleText
             itemView.tvURL.text = website.websiteURLText
+            itemView.setOnClickListener{clickListener(website)}
         }
     }
 
@@ -23,7 +25,7 @@ class WebsiteAdapter(private val websites:List<Website>):RecyclerView.Adapter<We
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.databind(websites[position])
+        holder.databind(websites[position],clickListener)
     }
 
     override fun getItemCount(): Int {

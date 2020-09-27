@@ -52,6 +52,7 @@ dependencies {
 
 
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.browser:browser:1.0.0"
 
 
 }

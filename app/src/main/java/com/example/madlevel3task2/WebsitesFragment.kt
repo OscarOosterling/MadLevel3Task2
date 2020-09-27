@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_websites.*
@@ -21,7 +23,12 @@ import kotlinx.android.synthetic.main.fragment_websites.*
 class WebsitesFragment : Fragment() {
 
     private val websites= arrayListOf<Website>()
-    private val websiteAdapter=WebsiteAdapter(websites)
+    private val websiteAdapter=WebsiteAdapter(websites) { website: Website ->
+        websiteItemClicked(
+            website
+        )
+    }
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +36,9 @@ class WebsitesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_websites, container, false)
+    }
+    private fun websiteItemClicked(website:Website){
+        //TODO MAKE IT OPEN CHROME TAB
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,9 +48,9 @@ class WebsitesFragment : Fragment() {
     }
 
     private fun initViews() {
-        rvWebsites.layoutManager=LinearLayoutManager(context,RecyclerView.VERTICAL,false)
+        rvWebsites.layoutManager=GridLayoutManager(context,2)
         rvWebsites.adapter=websiteAdapter
-        rvWebsites.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+        //.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
     }
     private fun observeAddWebsiteResult(){
         setFragmentResultListener(REQ_WEBSITE_KEY){
