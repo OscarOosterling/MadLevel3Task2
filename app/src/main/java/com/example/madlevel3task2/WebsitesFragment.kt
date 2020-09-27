@@ -44,8 +44,8 @@ class WebsitesFragment : Fragment() {
     }
     private fun observeAddWebsiteResult(){
         setFragmentResultListener(REQ_WEBSITE_KEY){
-            key,bundle->bundle.getString(BUNDLE_WEBSITE_KEY)?.let{
-            val website = Website(it)
+            key,bundle->bundle.getParcelable<Website>(BUNDLE_WEBSITE_KEY)?.let{
+            val website = Website(it.websiteTitleText,it.websiteURLText)
             websites.add(website)
             websiteAdapter.notifyDataSetChanged()
         }?: Log.e("WebsiteFragment","Request triggered,but empty website text")

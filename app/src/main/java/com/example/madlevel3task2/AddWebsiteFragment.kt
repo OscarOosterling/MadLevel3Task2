@@ -39,11 +39,10 @@ class AddWebsiteFragment : Fragment() {
     }
 
     private fun onAddWebsite() {
-        val websiteText = etWebsiteName.text.toString()
+        val website=Website(etWebsiteName.text.toString(),etWebsiteURL.text.toString())
 
-
-        if(websiteText.isNotBlank()){
-            setFragmentResult(REQ_WEBSITE_KEY, bundleOf(Pair(BUNDLE_WEBSITE_KEY,websiteText)))
+        if(website.websiteTitleText.isNotBlank() && website.websiteURLText.isNotBlank()){
+            setFragmentResult(REQ_WEBSITE_KEY, bundleOf(Pair(BUNDLE_WEBSITE_KEY,website)))
             findNavController().popBackStack()
         }else {
             Toast.makeText(

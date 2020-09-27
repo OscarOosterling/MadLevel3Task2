@@ -12,6 +12,7 @@ class WebsiteAdapter(private val websites:List<Website>):RecyclerView.Adapter<We
 
         fun databind(website:Website){
             itemView.tvWebsite.text = website.websiteTitleText
+            itemView.tvURL.text = website.websiteURLText
         }
     }
 
