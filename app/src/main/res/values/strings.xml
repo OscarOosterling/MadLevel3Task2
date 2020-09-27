@@ -9,4 +9,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Title">Title</string>
+    <string name="URL">URL</string>
+    <string name="AddWebsite">Add Website</string>
+    <string name="not_valid_website">Not a valid Website</string>
 </resources>
