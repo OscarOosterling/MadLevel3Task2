@@ -13,4 +13,5 @@
     <string name="URL">URL</string>
     <string name="AddWebsite">Add Website</string>
     <string name="not_valid_website">Not a valid Website</string>
+    <string name="url_prefix">http://www.</string>
 </resources>

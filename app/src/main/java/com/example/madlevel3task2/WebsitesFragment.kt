@@ -1,5 +1,7 @@
 package com.example.madlevel3task2
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -38,8 +42,14 @@ class WebsitesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_websites, container, false)
     }
     private fun websiteItemClicked(website:Website){
-        //TODO MAKE IT OPEN CHROME TAB
+        Log.e("website",website.websiteURLText)
+        createCustomChromeTab(website.websiteURLText)
     }
+    public fun createCustomChromeTab(url:String){
+        var builder = CustomTabsIntent.Builder()
+        var customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this.context, Uri.parse("https://www.${url}"))}
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
